@@ -4,10 +4,14 @@ import Todos from '../components/Todo/Todos'
 
 const TodoList = () => {
   return (
-    <div>
+    <main>
+    <div className='container'>
+      <div className='todos'>
         <TodoForme/>
         <Todos />
     </div>
+    </div>
+    </main>
   )
 }
 
