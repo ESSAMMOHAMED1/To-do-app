@@ -1,7 +1,11 @@
+import Header from "./components/Todo/Header";
+import TodoList from "./views/TodoList";
+
 function App() {
   return (
     <div className="App">
-    todoapp     
+      <Header />
+      <TodoList />
     </div>
   );
 }
