@@ -103,7 +103,7 @@ main {
   align-items: center;
 }
 
-.todos-form-icon {
+.todos-form-icon{
   margin-left: 1.5rem;
   cursor: pointer;
   height: 3rem;
@@ -112,7 +112,7 @@ main {
   transition: 0.3s ease-in-out;
 }
 .todos-form-icon:hover {
-  color: var(--color-green); 
+  color: var(--color-green);
 }
 .todos-form-icon.active {
   color: var(--color-green);
@@ -175,11 +175,12 @@ main {
 .todos-todo:hover {
   background-color: var(--color-hover);
 }
-.todos-todo_icon {
+.todos-todo-icon {
   color: var(--color-text-light);
   cursor: pointer;
+  
 }
-.todos-todo_text {
+.todos-todo-text {
   flex: 1;
   margin: 0 1rem;
   vertical-align: top;
@@ -187,6 +188,7 @@ main {
 .todo-cta {
   display: flex;
   align-items: center;
+  margin: 0 60% 0 0;
 }
 .todo-cta-edit {
   color: var(--color-yellow);
