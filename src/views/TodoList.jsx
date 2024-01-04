@@ -38,12 +38,18 @@ const TodoList = () => {
       return newData;
     });   
   };
+  const deleteTodo = (id)=>{
+    setTodes((data) => {
+      const newData = data.filter((td) => td.id !== id);
+      return newData;
+    });   
+  }
   return (
     <main>
       <div className="container">
         <div className="todos">
           <TodoForme />
-          <Todos todos={Todes} toggelTodo={toggelTodo}/>
+          <Todos todos={Todes} toggelTodo={toggelTodo} deleteTodo={deleteTodo}/>
         </div>
       </div>
     </main>

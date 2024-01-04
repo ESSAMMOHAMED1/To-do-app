@@ -1,6 +1,6 @@
 import React from "react";
 import FeatherIcon from "feather-icons-react";
-const Todo = ({ todo, toggelTodo }) => {
+const Todo = ({ todo, toggelTodo , deleteTodo}) => {
   return (
     <div className={`todos-todo ${todo.done ? "done" : ""}`}>
       <div className="todo-icon" onClick={() => toggelTodo(todo.id)}>   
@@ -11,8 +11,8 @@ const Todo = ({ todo, toggelTodo }) => {
         <div className="todo-cta-edit">
           <FeatherIcon icon="edit" />
         </div>
-        <div className="todo-cta-delete">
-          <FeatherIcon icon="trash-2" />
+        <div className="todo-cta-delete" onClick={()=>deleteTodo(todo.id)}>
+          <FeatherIcon icon="trash-2"/>
         </div>
       </div>
     </div>
