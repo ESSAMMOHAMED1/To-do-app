@@ -31,25 +31,39 @@ const TodoList = () => {
     setTodes((data) => {
       const newData = data.map((td) => {
         if (td.id === id) {
-          return{...td,done:!td.done};
+          return { ...td, done: !td.done };
         }
         return td;
       });
       return newData;
-    });   
+    });
   };
-  const deleteTodo = (id)=>{
+  const deleteTodo = (id) => {
     setTodes((data) => {
       const newData = data.filter((td) => td.id !== id);
       return newData;
-    });   
-  }
+    });
+  };
+  const addTodo = (title) => {
+    const newTodo = {
+      id: new Date().getTime(),
+      title,
+      done: false,
+    };
+    setTodes((data) => {
+      return [newTodo, ...data];
+    });
+  };
   return (
     <main>
       <div className="container">
         <div className="todos">
-          <TodoForme />
-          <Todos todos={Todes} toggelTodo={toggelTodo} deleteTodo={deleteTodo}/>
+          <TodoForme addTodo={addTodo} />
+          <Todos
+            todos={Todes}
+            toggelTodo={toggelTodo}
+            deleteTodo={deleteTodo}
+          />
         </div>
       </div>
     </main>
