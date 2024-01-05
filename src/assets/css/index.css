@@ -222,3 +222,7 @@ main {
   color: var(--color-text-light);
   opacity: 0.75;
 }
+
+.done{
+  color: var(--color-green);
+}

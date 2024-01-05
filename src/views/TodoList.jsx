@@ -26,7 +26,7 @@ const TodoList = () => {
     },
   ];
   const [Todes, setTodes] = useState(initialData);
-
+  const [mode, setMode] = useState("add");
   const toggelTodo = (id) => {
     setTodes((data) => {
       const newData = data.map((td) => {
@@ -38,12 +38,14 @@ const TodoList = () => {
       return newData;
     });
   };
+
   const deleteTodo = (id) => {
     setTodes((data) => {
       const newData = data.filter((td) => td.id !== id);
       return newData;
     });
   };
+
   const addTodo = (title) => {
     const newTodo = {
       id: new Date().getTime(),
@@ -54,13 +56,26 @@ const TodoList = () => {
       return [newTodo, ...data];
     });
   };
+
+  const toggelMode = () => {
+    if (mode === "filter") {
+      setMode("add");
+    } else {
+      setMode("filter");
+    }
+  };
+  let currentTodos = [...Todes];
+  if (mode === "filter") {
+    currentTodos = Todes.filter((td) => !td.done);
+  }
+
   return (
     <main>
       <div className="container">
         <div className="todos">
-          <TodoForme addTodo={addTodo} />
+          <TodoForme mode={mode} addTodo={addTodo} toggelMode={toggelMode} />
           <Todos
-            todos={Todes}
+            todos={currentTodos}
             toggelTodo={toggelTodo}
             deleteTodo={deleteTodo}
           />
