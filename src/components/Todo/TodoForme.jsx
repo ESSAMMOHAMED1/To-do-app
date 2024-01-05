@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import FeatherIcon from "feather-icons-react";
-const TodoForme = ({ addTodo }) => {
+const TodoForme = ({ addTodo, toggelMode, mode }) => {
   const [title, settitle] = useState("");
 
   const handelInputChange = (e) => {
@@ -17,8 +17,13 @@ const TodoForme = ({ addTodo }) => {
   };
   return (
     <div className="todos-form">
-      <div className="todos-form-icon">
-        <FeatherIcon icon="circle" />
+      <div
+        className={`todos-form-icon ${mode === "filter" ? "done" : ""}`}
+        onClick={toggelMode}
+      >
+        <FeatherIcon
+          icon={`${mode === "filter" ? "check-circle" : "circle"}`}
+        />
       </div>
       <div className="todos-form-input">
         <input
