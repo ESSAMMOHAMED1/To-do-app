@@ -6,7 +6,7 @@ const Todo = ({ todo, toggelTodo , deleteTodo,editTodo,mode}) => {
       <div className="todo-icon" onClick={() => toggelTodo(todo.id)}>   
         <FeatherIcon icon={todo.done ? "check-circle" : "circle"} />
       </div>
-      <div className="todo-text">{todo.title}</div>
+      <div className="todos-todo-text">{todo.title}</div>
      { mode !== 'edit' && (<div className="todo-cta">
         <div className="todo-cta-edit" onClick={() => editTodo(todo)}>
           <FeatherIcon icon="edit" />

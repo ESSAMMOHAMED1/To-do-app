@@ -188,11 +188,12 @@ main {
 .todo-cta {
   display: flex;
   align-items: center;
-  margin: 0 60% 0 0;
 }
 .todo-cta-edit {
+
   color: var(--color-yellow);
   cursor: pointer;
+  margin-right: 1rem;
 }
 .todo-cta-delete {
   margin-right: 1rem;
@@ -210,7 +211,7 @@ main {
 .todos-todo.done .todo-icon {
   color: var(--color-green);
 }
-.todos-todo.done .todo-text {
+.todos-todo.done .todos-todo-text {
   text-decoration: line-through;
   color: var(--color-text-light);
 }

@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Header = () => {
+const Header = (props) => {
   return (
     <header>
-       <h1>  قائمه المهام (0) </h1>  
+       <h1>  قائمه المهام ({props.Todes.length}) </h1>  
     </header>
   )
 }
