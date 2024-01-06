@@ -1,14 +1,21 @@
 import React from "react";
 import { useState } from "react";
 import FeatherIcon from "feather-icons-react";
-const TodoForme = ({ addTodo, toggelMode, mode }) => {
-  const [title, settitle] = useState("");
+const TodoForme = ({ addTodo, toggelMode, mode,activeTodo }) => {
+  const [title, settitle] = useState('');
+  
+  const [Reander, setReander] = useState(false); 
+  
+  if(mode ==='edit' && !Reander){
+    settitle(activeTodo.title); 
+    setReander(true);
+   }
 
   const handelInputChange = (e) => {
     settitle(e.target.value);
   };
-
   const handelAddNewTodo = () => {
+    setReander(false);
     if (!title.trim()) {
       return;
     }
@@ -37,10 +44,15 @@ const TodoForme = ({ addTodo, toggelMode, mode }) => {
         <button
           className="submit-btn"
           disabled={!title.trim()}
-          onClick={handelAddNewTodo}
-        >
-          اضافه
-        </button>
+          onClick={handelAddNewTodo}>
+            {
+              mode === 'edit'
+              ? 
+              'تعديل'
+              :
+              'اضافه'
+            }
+          </button>
       </div>
     </div>
   );

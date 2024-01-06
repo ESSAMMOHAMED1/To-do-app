@@ -27,6 +27,7 @@ const TodoList = () => {
   ];
   const [Todes, setTodes] = useState(initialData);
   const [mode, setMode] = useState("add");
+  const [activeTodo, setActiveTodo] = useState(null);
   const toggelTodo = (id) => {
     setTodes((data) => {
       const newData = data.map((td) => {
@@ -47,24 +48,47 @@ const TodoList = () => {
   };
 
   const addTodo = (title) => {
-    const newTodo = {
-      id: new Date().getTime(),
-      title,
-      done: false,
-    };
-    setTodes((data) => {
-      return [newTodo, ...data];
-    });
+    if (mode !== "edit") {
+      const newTodo = {
+        id: new Date().getTime(),
+        title,
+        done: false,
+      };
+      setTodes((data) => {
+        return [newTodo, ...data];
+      });
+    } else if (mode === "edit") {
+      const newTodos = Todes.map((t) => {
+        if (t.id === activeTodo.id) {
+          t.title = title;
+        }
+        return t;
+      });
+      setTodes(newTodos);
+      setMode('add')
+    }
   };
 
   const toggelMode = () => {
+    if(mode==='edit'){
+      return;
+    }
     if (mode === "filter") {
       setMode("add");
     } else {
       setMode("filter");
     }
   };
+
+  const editTodo = (todo) => {
+    setMode("edit");
+    setActiveTodo(todo);
+  };
+
   let currentTodos = [...Todes];
+  if (mode === "edit" && activeTodo) {
+    currentTodos = [activeTodo];
+  }
   if (mode === "filter") {
     currentTodos = Todes.filter((td) => !td.done);
   }
@@ -73,11 +97,18 @@ const TodoList = () => {
     <main>
       <div className="container">
         <div className="todos">
-          <TodoForme mode={mode} addTodo={addTodo} toggelMode={toggelMode} />
+          <TodoForme
+            activeTodo={activeTodo}
+            mode={mode}
+            addTodo={addTodo}
+            toggelMode={toggelMode}
+          />
           <Todos
+            mode={mode}
             todos={currentTodos}
             toggelTodo={toggelTodo}
             deleteTodo={deleteTodo}
+            editTodo={editTodo}
           />
         </div>
       </div>
