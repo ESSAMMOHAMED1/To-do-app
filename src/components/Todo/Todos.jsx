@@ -6,10 +6,12 @@ const Todos = (props) => {
     <div className="todos-list">
       {props.todos.map((todo) => (
         <Todo
+          mode={props.mode}
           todo={todo}
           key={todo.id}
           toggelTodo={props.toggelTodo}
           deleteTodo={props.deleteTodo}
+          editTodo={props.editTodo}
         />
       ))}
       {props.todos.length === 0 && (
